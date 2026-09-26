@@ -1,0 +1,127 @@
+// ExploraEC — Sesión 2: fundamentos de Dart
+// Ejecutar con: dart run lib/playground/dart_basics.dart
+void main() {
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioVariables() y descomenta su bloque completo
+  // ejercicioVariables();
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioControlDeFlujo() y descomenta su bloque completo
+  // print('--- Control de flujo: pendiente (descomenta ejercicioControlDeFlujo) ---');
+  // ejercicioControlDeFlujo();
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioBucles() y descomenta su bloque completo
+  // print('--- Bucles: pendiente (descomenta ejercicioBucles) ---');
+  // ejercicioBucles();
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioNullSafety() y descomenta su bloque completo
+  // print('--- Null safety: pendiente (descomenta ejercicioNullSafety) ---');
+  // ejercicioNullSafety();
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioFunciones() y descomenta su bloque completo
+  // print('--- Funciones: pendiente (descomenta ejercicioFunciones) ---');
+  // ejercicioFunciones();
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioColecciones() y descomenta su bloque completo
+  // print('--- Colecciones: pendiente (descomenta ejercicioColecciones) ---');
+  // ejercicioColecciones();
+  // TODO(sesion-02): comenta la línea de abajo, la llamada a ejercicioClases() y descomenta su bloque completo
+  // print('--- Clases y herencia: pendiente (descomenta ejercicioClases) ---');
+  ejercicioClases();
+}
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioVariables()
+// void ejercicioVariables() {
+//   var nombre = 'ExploraEC';
+//   final creado = DateTime.now();
+//   const version = '1.0.0';
+//   print('App: $nombre v$version — creado: $creado');
+// }
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioControlDeFlujo()
+// void ejercicioControlDeFlujo() {
+//   String categorizarDistancia(double metros) {
+//     if (metros < 500) {
+//       return 'Muy cerca';
+//     } else if (metros < 2000) {
+//       return 'Cerca';
+//     } else {
+//       return 'Lejos';
+//     }
+//   }
+
+//   print(categorizarDistancia(300));
+//   print(categorizarDistancia(1200));
+//   print(categorizarDistancia(5000));
+// }
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioBucles()
+// void ejercicioBucles() {
+//   final nombresDeEjemplo = ['Parque Ejido', 'Café Central', 'Museo'];
+//   for (final nombre in nombresDeEjemplo) {
+//     print('Lugar: $nombre');
+//   }
+
+//   var contador = 0;
+//   while (contador < 3) {
+//     print('Vuelta número $contador');
+//     contador++;
+//   }
+// }
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioNullSafety()
+// void ejercicioNullSafety() {
+//   String? apodo;
+//   print('Apodo antes de asignar: ${apodo ?? "(sin apodo)"}');
+//   apodo = 'Explo';
+//   print('Apodo ya asignado, longitud: ${apodo.length}');
+// }
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioFunciones()
+// void ejercicioFunciones() {
+//   String saludar(
+//     String nombre, {
+//     String saludo = 'Hola',
+//     bool mayusculas = false,
+//   }) {
+//     final texto = '$saludo, $nombre';
+//     return mayusculas ? texto.toUpperCase() : texto;
+//   }
+
+//   print(saludar('Ana'));
+//   print(saludar('Ana', saludo: 'Bienvenida', mayusculas: true));
+// }
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioColecciones()
+// void ejercicioColecciones() {
+//   final categorias = <String>{'Parque', 'Cafetería', 'Museo'};
+//   print('Categorías únicas: $categorias');
+
+//   final distancias = <String, double>{'Parque Ejido': 300, 'Museo': 1800};
+//   print('Distancia al Museo: ${distancias['Museo']} m');
+//   print('Distancia a un lugar inexistente: ${distancias['Playa']}');
+
+//   final nombres = ['Café Central', 'Parque Ejido', 'Museo'];
+//   final conCafe = nombres.where((n) => n.contains('Café')).toList();
+//   print('Lugares con "Café": $conCafe');
+// }
+
+// TODO(sesion-02): descomenta la llamada y el bloque completo ejercicioClases()
+void ejercicioClases() {
+  final ana = Persona('Ana', 28);
+  print(ana.presentarse());
+
+  final consola = Consola();
+  consola.notificar('Lugar agregado con éxito');
+}
+
+class Persona {
+  final String nombre;
+  final int edad;
+
+  Persona(this.nombre, this.edad);
+
+  String presentarse() => 'Soy $nombre y tengo $edad años';
+}
+
+abstract class Notificable {
+  void notificar(String mensaje);
+}
+
+class Consola extends Notificable {
+  @override
+  void notificar(String mensaje) => print('Aviso: $mensaje');
+}
