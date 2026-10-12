@@ -137,16 +137,16 @@ class AuthController extends GetxController {
     // respuesta. Con la contraseña actual equivocada el servidor responde con
     // un error y su mensaje se muestra tal cual.
     // TODO(sesion-08) OPCIONAL Paso 9: descomenta las 10 líneas de abajo (cambiar contraseña).
-    // cargando.value = true;
-    // mensajeError.value = '';
-    // try {
-    //   await _api.put('/usuarios/me/password', data: {'password_actual': actual, 'password_nueva': nueva});
-    //   await cerrarSesion();
-    // } on ApiException catch (e) {
-    //   mensajeError.value = e.mensaje;
-    // } finally {
-    //   cargando.value = false;
-    // }
+    cargando.value = true;
+    mensajeError.value = '';
+    try {
+      await _api.put('/usuarios/me/password', data: {'password_actual': actual, 'password_nueva': nueva});
+      await cerrarSesion();
+    } on ApiException catch (e) {
+      mensajeError.value = e.mensaje;
+    } finally {
+      cargando.value = false;
+    }
   }
 
   /// GET /usuarios/me → deja el usuario de la sesión en `usuario`.

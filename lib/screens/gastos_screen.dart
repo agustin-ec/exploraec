@@ -51,11 +51,11 @@ class GastosScreen extends GetView<GastosController> {
               if (valor == 'invalidar') auth.invalidarTokenParaPruebas();
               // Por qué: pantalla opcional del Paso 9 (cambiar contraseña).
               // TODO(sesion-08) OPCIONAL Paso 9: descomenta la línea de abajo (abrir la pantalla).
-              // if (valor == 'password') Get.to(() => const CambiarPasswordScreen());
+              if (valor == 'password') Get.to(() => const CambiarPasswordScreen());
             },
             itemBuilder: (context) => [
               // TODO(sesion-08) OPCIONAL Paso 9: descomenta la línea de abajo (opción del menú).
-              // const PopupMenuItem(value: 'password', child: Text('Cambiar contraseña')),
+              const PopupMenuItem(value: 'password', child: Text('Cambiar contraseña')),
               const PopupMenuItem(value: 'salir', child: Text('Cerrar sesión')),
               if (kDebugMode)
                 const PopupMenuItem(value: 'invalidar', child: Text('Invalidar token (solo práctica)')),
