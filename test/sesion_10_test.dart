@@ -104,7 +104,7 @@ void main() {
     final montaje = _montar();
     await tester.pumpWidget(const GetMaterialApp(home: RegisterScreen()));
     await tester.enterText(find.byType(TextFormField).at(0), 'a@b.com');
-    await tester.enterText(find.byType(TextFormField).at(1), 'abc');
+    await tester.enterText(find.byType(TextFormField).at(1), 'abcdefgh');
     await tester.tap(find.widgetWithText(FilledButton, 'Crear cuenta'));
     await tester.pump();
     expect(find.text('La contraseña debe tener entre 8 y 72 caracteres'), findsOneWidget);
