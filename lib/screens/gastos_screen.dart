@@ -7,6 +7,7 @@ import '../controllers/gastos_controller.dart';
 import '../controllers/places_controller.dart' show EstadoCarga;
 import '../models/gasto.dart';
 import '../services/api_exception.dart';
+import '../theme/app_theme.dart';
 import 'pantalla_con_fallo.dart';
 import '../widgets/empty_view.dart';
 import '../widgets/error_view.dart';
@@ -103,15 +104,41 @@ class GastosScreen extends GetView<GastosController> {
                   ),
                 ],
               ),
+            _buildFiltroCategorias(),
             Expanded(
               child: RefreshIndicator(
                 onRefresh: controller.cargarGastos,
-                child: _buildLista(context, controller.gastos),
+                child: _buildLista(context, controller.gastosFiltrados),
               ),
             ),
           ],
         );
       }),
+    );
+  }
+
+  /// Fila de chips «Todas» + una por cada categoría presente en los gastos.
+  Widget _buildFiltroCategorias() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+      child: Row(
+        children: [
+          ChoiceChip(
+            label: const Text('Todas'),
+            selected: controller.categoriaFiltro.value == null,
+            onSelected: (_) => controller.filtrarPorCategoria(null),
+          ),
+          for (final categoria in controller.categoriasPresentes) ...[
+            const SizedBox(width: AppSpacing.sm),
+            ChoiceChip(
+              label: Text(categoria),
+              selected: controller.categoriaFiltro.value == categoria,
+              onSelected: (_) => controller.filtrarPorCategoria(categoria),
+            ),
+          ],
+        ],
+      ),
     );
   }
 
